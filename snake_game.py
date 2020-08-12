@@ -191,8 +191,14 @@ while True:
             break
 
     # Checks if Head Hits Boundary
-    if head.xcor() < -380 or head.xcor() > 380 or head.ycor() < -380 or head.ycor() > 380:
-        game_over()             # Calls the Game over Function
+    if head.xcor() < -380:
+        head.goto(380, head.ycor())
+    if head.xcor() > 380:
+        head.goto(-380, head.ycor())
+    if head.ycor() < -380:
+        head.goto(head.xcor(), 380)
+    if head.ycor() > 380:
+        head.goto(head.xcor(), -380)
 
     time.sleep(delay)           # Waits for delay amount of time before looping again
 
